@@ -1,0 +1,288 @@
+<html>
+<head><title>MCQ</title>
+<script src="Question.js" type="text/javascript"></script>
+<script src="jquery.min.js" type="text/javascript"></script>
+<script  type="text/javascript">
+
+$(document).ready(function(){
+count=0;
+n=0;
+finish=0;
+//alert('finish:'+finish);
+len=Questions.question.length;
+//alert('Array length:'+len);
+gen();
+
+});
+
+function gen()
+{
+//alert('generator display N:'+n);
+//alert('finsih:'+finish);
+len=Questions.question.length;
+ln=len-1;
+while(n<=ln)
+{
+
+/*-------------------DISPLAY----------------------*/
+
+//alert('for loop for'+n);
+var wrap=document.getElementById("wrapper");
+wrap.innerHTML="";
+
+
+var e=document.createElement("span");
+e.setAttribute("id","quest");
+e.innerHTML="";
+e.innerHTML=Questions.question[n].question+"<br>";
+wrap.appendChild(e);
+
+var wrapop=document.createElement("div");
+wrapop.setAttribute("class","op");
+wrap.appendChild(wrapop);
+
+
+/*----------OPTIONS--------*/
+var op1=document.createElement("input");
+op1.setAttribute("type","radio");
+op1.setAttribute("name","option");
+op1.setAttribute("value","1");
+op1.setAttribute("id","option1");
+var s1=document.createElement("span");
+s1.setAttribute("id","opt1");
+s1.innerHTML=Questions.question[n].choice1+"<br>";
+wrapop.appendChild(op1);
+wrapop.appendChild(s1);
+
+
+var op2=document.createElement("input");
+op2.setAttribute("type","radio");
+op2.setAttribute("name","option");
+op2.setAttribute("value","2");
+op2.setAttribute("id","option2");
+var s2=document.createElement("span");
+s2.setAttribute("id","opt2");
+s2.innerHTML=Questions.question[n].choice2+"<br>";
+wrapop.appendChild(op2);
+wrapop.appendChild(s2);
+
+var op3=document.createElement("input");
+op3.setAttribute("type","radio");
+op3.setAttribute("name","option");
+op3.setAttribute("value","3");
+op3.setAttribute("id","option3");
+var s3=document.createElement("span");
+s3.setAttribute("id","opt3");
+s3.innerHTML=Questions.question[n].choice3+"<br>";
+wrapop.appendChild(op3);
+wrapop.appendChild(s3);
+
+var op4=document.createElement("input");
+op4.setAttribute("type","radio");
+op4.setAttribute("name","option");
+op4.setAttribute("value","4");
+op4.setAttribute("id","option4");
+var s4=document.createElement("span");
+s4.setAttribute("id","opt4");
+s4.innerHTML=Questions.question[n].choice4+"<br>";
+wrapop.appendChild(op4);
+wrapop.appendChild(s4);
+
+
+if(n<len-1)
+{
+var b=document.createElement("input");
+b.setAttribute("type","button");
+b.setAttribute("id","btn");
+b.setAttribute("name","btn");
+b.setAttribute("value","Next");
+wrap.appendChild(b);
+}
+else
+{
+
+var b1=document.createElement("input");
+b1.setAttribute("type","button");
+b1.setAttribute("id","submit");
+b1.setAttribute("name","submit");
+b1.setAttribute("value","Submit");
+wrap.appendChild(b1);
+//alert('Submit')
+}
+
+a=document.getElementById('option1');
+b=document.getElementById('option2');
+c=document.getElementById('option3');
+d=document.getElementById('option4');
+ans=Questions.question[n].correct;
+//alert('N incremeneted')
+
+$('#submit').click(function(){
+//
+//	window.location="exit.html";
+	alert('submit clicked');
+	if(check())
+	{
+	finsh=1;
+//	alert('check returned');
+//	alert('score called');
+	score();
+	}
+});
+
+$('#btn').click(function(){
+	//alert('next clicked');
+	if(check())
+	{
+	n++;
+	//alert('check returned');
+	gen();
+	}
+});
+
+
+
+
+function score()
+{
+var scoree=count;
+alert(scoree);
+//document.location.href="exit.html?score_value="+scoree;
+//document.getElementById("score_value").value=scoree;
+finish=0;
+
+var wrap=document.getElementById("wrapper");
+wrap.innerHTML="";
+
+var e=document.createElement("span");
+e.setAttribute("id","score");
+e.innerHTML="Your Score is"+count+"<br>";
+wrap.appendChild(e);
+
+var b=document.createElement("input");
+b.setAttribute("type","button");
+b.setAttribute("id","again");
+b.setAttribute("name","again");
+b.setAttribute("value","Try Again");
+wrap.appendChild(b);
+
+$('#again').click(function(){
+//alert("Try again Called");
+window.location="Quiz.html";
+});
+
+}
+
+
+//alert('break called');
+break;
+
+}
+/*------------------*/
+}
+function check()
+{
+if(document.getElementById('option1').checked==true || document.getElementById('option2').checked==true || document.getElementById('option3').checked==true || document.getElementById('option4').checked==true)
+	{
+		len=Questions.question.length;
+//		alert("checked called"+n);
+		var ans=Questions.question[n].correct;
+//		alert(ans);
+		if(document.getElementById('option1').value==ans && document.getElementById('option1').checked==true )
+		{
+//			alert("Correct");
+			count++;
+			return true;
+		}
+		else if(document.getElementById('option2').value==ans && document.getElementById('option2').checked==true )
+		{
+//			alert("Correct");
+			count++;
+			return true;
+		}
+		else if(document.getElementById('option3').value==ans && document.getElementById('option3').checked==true )
+		{
+//			alert("Correct");
+			count++;
+			return true;
+		}
+		else if(document.getElementById('option4').value==ans && document.getElementById('option4').checked==true )
+		{
+//			alert("Correct");
+			count++;
+			return true;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	else
+	{
+		alert("Please select fisrt");
+	}
+}
+var seconds = 5;
+function secondPassed() {
+
+    var minutes = Math.round((seconds - 30)/60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+    }
+    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+		var final_score=count;
+		alert(final_score);
+		window.location = "Exit.html?final_score=" + final_score;
+		
+		alert('Time up');
+    } else {
+        seconds--;
+    }
+}
+var countdownTimer = setInterval('secondPassed()', 1000);
+
+</script>
+</head>
+<style>
+.footer
+{
+	width:100%;
+	position:absolute;
+	background: black;
+	box-shadow: 0 0 20px gold;
+	color:white;
+	margin-top:302px;
+	margin-left:-8px;
+}
+
+.img_logo
+{
+	margin-left:1000px;
+	margin-top:-249px;
+}
+</style>
+<body onload="startTimer()">
+<center>
+<img class="img" src="RTS.png" height="40%" width="55%">
+<img class="img_logo" src="Logo.png">
+</center><!--Selection of the Level.-->
+
+<div id='wrapper'>
+<br>
+</div>
+<center>
+<a href="quiz.html">Exit Quiz</a>
+</center>
+
+<span id="countdown" class="timer"></span>
+
+
+<div class="footer">
+<center><pre>Copyright&#169; 2015 Ishani Developers. All Rights Reserved.</pre></center>
+
+</div>
+</body>
+</html>

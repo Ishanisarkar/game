@@ -1,0 +1,85 @@
+<html>
+<head><title>Help</title>
+<link rel="icon" href="ws.ico">
+<script>
+function back()
+{
+	window.location="Quiz.html"; // Called to the file index.html.
+}
+</script>
+<style>
+body 
+{
+	background-image:url('traffic_1.jpg');
+	height:100%;
+	width:100%;
+}
+h1,h2 
+{
+	font-family:Lucida Handwriting;
+	color:White;
+}
+input 
+{
+	background-color:limegreen;
+x	color:white;
+	border:solid black 3px;
+	border-radius:10px;
+	-webkit-border-radius:20px;
+	font-size:25px;
+	width:10%;
+}
+#rules 
+{
+	border:solid white 10px;
+	border-radius:10px;
+	-webkit-border-radius:10px; 
+	-moz-border-radius:10px; 
+	-o-border-radius:10px; 
+	background-color:#000000;
+	color:#ffffff;
+	width:60%;
+	margin-top:100px;
+	margin-left:280px;
+	font-size:18px;
+	font-family:Comic Sans MS;
+}
+.footer
+{
+	width:100%;
+	position:absolute;
+	background: black;
+	box-shadow: 0 0 20px gold;
+	color:white;
+	margin-top:302px;
+	margin-left:-8px;
+}
+.img
+{
+	opacity:0.3;
+}
+</style>
+</head>
+<body>
+<!--Banner of the Game-->
+<center>
+</center>
+<!--Rules and Regulations of the Game.-->
+<div id="rules">
+<h3>The Game is a quiz test to check how the user is known with the traffic symbols. Level-1.</h3>
+<pre>The Rules and Regulations of the game are as follows:</pre>
+<ul>
+<li>Only a single player can play the game at a time.</li>
+<li>The user can play the levels sequentially, after clearing the level the next level will be unlocked.</li>
+<li>The user will be given with an image of a traffic symbol, he/she needs to identify the sign board.</li>
+<li>For each correct answer, 2 marks will be rewarded and for incorrent answer 0 marks will be deducted.</li>
+</ul>
+</div><br/>
+<!--Displays a button named back. When clicked it calls the function back()-->
+<center><input type="button" value="Back" name="btn" id="btn" onclick="back()" /></center>
+<!--Footer of the Game-->
+<div class="footer">
+<center><pre>Copyright&#169; 2015 Ishani Developers. All Rights Reserved.</pre></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head><title>MCQ</title>
+<script src="Question.js" type="text/javascript"></script>
+<script src="jquery.min.js" type="text/javascript"></script>
+<style>
+.footer
+{
+	width:100%;
+	position:absolute;
+	background: black;
+	box-shadow: 0 0 20px gold;
+	color:white;
+	margin-top:302px;
+	margin-left:-8px;
+}
+.img_logo
+{
+	margin-left:1000px;
+	margin-top:-249px;
+}
+</style>
+<script>
+function display() {
+
+var scoree = window.location.search.substring(13);
+alert(scoree);
+document.getElementById("scoree").innerHTML = "Final Score: " +scoree;
+}
+
+function try_again()
+{
+	window.location="Learn.html";
+}
+
+function exitt()
+{
+	window.location="Quiz.html";
+}
+</script>
+
+<body onload="display()">
+<center>
+<img class="img" src="RTS.png" height="40%" width="55%">
+<img class="img_logo" src="Logo.png">
+</center><!--Selection of the Level.-->
+
+<div id="scoree" name="scoree"/>
+</div>
+<br/><br/>
+<button onclick="try_again()" id="btn" name="btn">Try Again</button>
+<button onclick="exitt()" id="btn" name="btn">Exit</button>
+<div class="footer">
+<center><pre>Copyright&#169; 2015 Ishani Developers. All Rights Reserved.</pre></center>
+
+</div>
+</body>
+</html>
